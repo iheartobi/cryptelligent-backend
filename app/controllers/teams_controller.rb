@@ -1,18 +1,18 @@
   class TeamsController < ApplicationController
   before_action :set_team, only: [:show, :update, :destroy]
-  skip_before_action :authorized, only: [:index]
+  skip_before_action :authorized, only: [:index, :show]
 
 
   # GET /teams
   def index
-    @teams = Team.all
-    render json: @teams, status: :ok
+    teams = Team.all
+    render :json => teams.to_json(:include => { :user => { :only => :username }}), status: :ok
   end
 
   # GET /teams/1
   def show
     @team = Team.find_by(id: params[:id])
-    render json: @team, status: :ok
+    render :json => @team.to_json(:include => { :user => { :only => :username }}), status: :ok
   end
 
   # POST /teams
@@ -52,6 +52,6 @@
 
     # Only allow a trusted parameter "white list" through.
     def team_params
-      params.permit(:name, :roster, :points)
+      params.require(:team).permit(:name, :roster, :points, :rank, :wins, :loss, :tie)
     end
   end

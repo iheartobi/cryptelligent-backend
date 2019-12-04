@@ -1,6 +1,6 @@
   class LeaguesController < ApplicationController
   before_action :set_league, only: [:show, :update, :destroy]
-  skip_before_action :authorized, only: [:index]
+  skip_before_action :authorized, only: [:index, :show]
 
 
   # GET /leagues

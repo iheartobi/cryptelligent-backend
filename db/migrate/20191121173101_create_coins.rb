@@ -14,7 +14,7 @@ class CreateCoins < ActiveRecord::Migration[5.2]
       t.bigint :high
       t.bigint :high_timestamp
       t.integer :max_sold, default: 0
-      t.references :user
+      t.references :team
 
 
       t.timestamps

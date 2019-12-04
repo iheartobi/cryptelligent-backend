@@ -29,10 +29,10 @@ ActiveRecord::Schema.define(version: 2019_11_21_173101) do
     t.bigint "high"
     t.bigint "high_timestamp"
     t.integer "max_sold", default: 0
-    t.bigint "user_id"
+    t.bigint "team_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_coins_on_user_id"
+    t.index ["team_id"], name: "index_coins_on_team_id"
   end
 
   create_table "leagues", force: :cascade do |t|
@@ -47,6 +47,10 @@ ActiveRecord::Schema.define(version: 2019_11_21_173101) do
     t.string "name"
     t.string "roster"
     t.integer "points", default: 0
+    t.integer "rank"
+    t.integer "wins"
+    t.integer "loss"
+    t.integer "tie"
     t.bigint "user_id"
     t.bigint "league_id"
     t.datetime "created_at", null: false
@@ -60,7 +64,7 @@ ActiveRecord::Schema.define(version: 2019_11_21_173101) do
     t.string "username"
     t.string "email"
     t.string "password_digest"
-    t.string "img_url", default: "https://cdn2.vectorstock.com/i/1000x1000/84/31/silhouette-default-avatar-woman-to-social-user-vector-18018431.jpg"
+    t.string "img_url", default: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRcxydKf3jQLULLej801Y4z9c5cL3uKX_j66GviTQLCH6py0qvc"
     t.string "bg_url", default: "https://i.ytimg.com/vi/Ia1tjllVygs/maxresdefault.jpg"
     t.integer "coinbank", default: 1000
     t.boolean "active", default: true

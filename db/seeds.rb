@@ -61,6 +61,10 @@ end
         name: Faker::Team.name,
         roster: Faker::CryptoCoin.coin_array,
         points: Faker::Number.between(from: 0, to: 250),
+        rank: Faker::Number.between(from: 0, to: 25),
+        wins: Faker::Number.between(from: 0, to: 20),
+        loss: Faker::Number.between(from: 0, to: 15),
+        tie: Faker::Number.between(from: 0, to: 10),
         user_id: user.id,
         league_id: league.id
     )
