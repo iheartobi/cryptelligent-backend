@@ -5,8 +5,8 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.string :username
       t.string :email
       t.string :password_digest
-      t.string :img_url, default: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRcxydKf3jQLULLej801Y4z9c5cL3uKX_j66GviTQLCH6py0qvc"
-      t.string :bg_url, default: "https://i.ytimg.com/vi/Ia1tjllVygs/maxresdefault.jpg"
+      t.string :img_url, default: "http://brandesscadmusrealestate.com/images/team/blank.png"
+      t.string :bg_url, default: "https://cdn.hipwallpaper.com/i/39/64/bzVo03.jpg"
       t.integer :coinbank, default:  1000
       t.boolean :active, default: :true
 

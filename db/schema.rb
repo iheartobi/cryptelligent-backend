@@ -35,37 +35,13 @@ ActiveRecord::Schema.define(version: 2019_11_21_173101) do
     t.index ["team_id"], name: "index_coins_on_team_id"
   end
 
-  create_table "leagues", force: :cascade do |t|
-    t.string "name"
-    t.integer "tier"
-    t.integer "win_amount"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "teams", force: :cascade do |t|
-    t.string "name"
-    t.string "roster"
-    t.integer "points", default: 0
-    t.integer "rank"
-    t.integer "wins"
-    t.integer "loss"
-    t.integer "tie"
-    t.bigint "user_id"
-    t.bigint "league_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["league_id"], name: "index_teams_on_league_id"
-    t.index ["user_id"], name: "index_teams_on_user_id"
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "username"
     t.string "email"
     t.string "password_digest"
-    t.string "img_url", default: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRcxydKf3jQLULLej801Y4z9c5cL3uKX_j66GviTQLCH6py0qvc"
-    t.string "bg_url", default: "https://i.ytimg.com/vi/Ia1tjllVygs/maxresdefault.jpg"
+    t.string "img_url", default: "http://brandesscadmusrealestate.com/images/team/blank.png"
+    t.string "bg_url", default: "https://cdn.hipwallpaper.com/i/39/64/bzVo03.jpg"
     t.integer "coinbank", default: 1000
     t.boolean "active", default: true
     t.datetime "created_at", null: false

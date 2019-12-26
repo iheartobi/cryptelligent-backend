@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-        resources :teams
-        resources :leagues
         resources :users
         resources :coins, only: [:index, :show]
         post '/login', to: 'auth#create'
