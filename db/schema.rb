@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_21_173101) do
+ActiveRecord::Schema.define(version: 2019_12_27_150827) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,10 +29,17 @@ ActiveRecord::Schema.define(version: 2019_11_21_173101) do
     t.bigint "high"
     t.bigint "high_timestamp"
     t.integer "max_sold", default: 0
-    t.bigint "team_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["team_id"], name: "index_coins_on_team_id"
+  end
+
+  create_table "transactions", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "coin_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["coin_id"], name: "index_transactions_on_coin_id"
+    t.index ["user_id"], name: "index_transactions_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -43,7 +50,6 @@ ActiveRecord::Schema.define(version: 2019_11_21_173101) do
     t.string "img_url", default: "http://brandesscadmusrealestate.com/images/team/blank.png"
     t.string "bg_url", default: "https://cdn.hipwallpaper.com/i/39/64/bzVo03.jpg"
     t.integer "coinbank", default: 1000
-    t.boolean "active", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

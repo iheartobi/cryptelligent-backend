@@ -14,6 +14,31 @@ class CoinsController < ApplicationController
       @coin = Coin.find_by(id: params[:id])
       render json: @coin, status: :ok
     end
+
+    def create
+      @coin = Coin.find_or_create_by!(name: coin_params[:name], currency: coin_params[:currency], symbol: coin_params[:symbol], logo_url: coin_params[:logo_url], price: coin_params[:price], rank: coin_params[:rank], price_date: coin_params[:price_date], market_cap: coin_params[:market_cap], circulating_supply: coin_params[:circulating_supply], max_supply: coin_params[:max_supply], high: coin_params[:high], high_timestamp: coin_params[:high_timestamp], max_sold: coin_params[:max_sold], userId: coin_params[:userId])
+		
+		if @taste.save
+			currentUser = User.find(coin_params[:userID])
+
+			if currentUser.coins.any?{|coin| coin['name'] === @coin['name']}
+				render json: @coin, status: :ok
+
+			else
+				@coin.users << currentUser
+				render json: @coin, status: :created
+			end
+
+		else
+			render json: @coin.errors.full_messages, status: :unprocessable_entity
+		end
+    end
+
+    def update
+      @coin = Coin.find(params[:id])
+      @coin.update(max_sold: tastes_params[:max_sold])
+      render json: @coin, status: :ok
+    end
   
     
     private

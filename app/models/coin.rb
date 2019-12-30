@@ -1,3 +1,4 @@
 class Coin < ApplicationRecord
-    has_and_belongs_to_many :teams
+    has_many :transactions
+    has_many :users, through: :transactions
 end
