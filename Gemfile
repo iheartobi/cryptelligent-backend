@@ -54,3 +54,4 @@ gem "jwt", "~> 2.2"
 gem 'rest-client'
 
 gem "figaro"
+gem 'will_paginate'

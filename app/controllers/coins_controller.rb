@@ -5,7 +5,7 @@ class CoinsController < ApplicationController
   
     # GET /coins
     def index
-      @coins = Coin.all
+      @coins = Coin.paginate(page: params[:page], per_page: 200)
       render json: @coins, status: :ok
     end
   
@@ -18,7 +18,7 @@ class CoinsController < ApplicationController
     def create
       @coin = Coin.find_or_create_by!(name: coin_params[:name], currency: coin_params[:currency], symbol: coin_params[:symbol], logo_url: coin_params[:logo_url], price: coin_params[:price], rank: coin_params[:rank], price_date: coin_params[:price_date], market_cap: coin_params[:market_cap], circulating_supply: coin_params[:circulating_supply], max_supply: coin_params[:max_supply], high: coin_params[:high], high_timestamp: coin_params[:high_timestamp], max_sold: coin_params[:max_sold], userId: coin_params[:userId])
 		
-		if @taste.save
+		if @coin.save
 			currentUser = User.find(coin_params[:userID])
 
 			if currentUser.coins.any?{|coin| coin['name'] === @coin['name']}
@@ -36,7 +36,7 @@ class CoinsController < ApplicationController
 
     def update
       @coin = Coin.find(params[:id])
-      @coin.update(max_sold: tastes_params[:max_sold])
+      @coin.update(max_sold: coin_params[:max_sold])
       render json: @coin, status: :ok
     end
   
