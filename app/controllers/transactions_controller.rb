@@ -5,13 +5,13 @@ class TransactionsController < ApplicationController
   # GET /transactions
   def index
     @transactions = Transaction.all
-    render json: @transactions, status: :ok
+    render json: @transactions.to_json(include: ['coin'])
   end
 
   # GET /transactions/1
   def show
     @transaction = Transaction.find_by(id: params[:id])
-    render json: @transaction, status: :ok
+    render json: @transaction.as_json(:include => :coin), status: :ok
   end
 
   # POST /transactions

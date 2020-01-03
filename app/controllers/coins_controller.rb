@@ -5,7 +5,7 @@ class CoinsController < ApplicationController
   
     # GET /coins
     def index
-      @coins = Coin.paginate(page: params[:page], per_page: 200)
+      @coins = Coin.paginate(page: params[:page], per_page: 300)
       render json: @coins, status: :ok
     end
   
