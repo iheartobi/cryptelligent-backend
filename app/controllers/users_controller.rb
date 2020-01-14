@@ -1,6 +1,6 @@
   class UsersController < ApplicationController
   before_action :set_user, only: [:show, :update, :destroy]
-  skip_before_action :authorized, only: [:index, :create, :show]
+  skip_before_action :authorized, only: [:index, :create, :show, :update]
     # dont forget to come back and change the authorized
 
   # GET /users
@@ -35,7 +35,7 @@ end
   def update 
     @user = User.find_by(id: params[:id])
    if  @user.update(user_params)
-    render json: @user, status: :ok
+    render json: @user.as_json(:include => :coins), status: :ok
     else
       render json: @user.errors.full_messages, status: :unprocessable_entity
     end

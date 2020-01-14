@@ -1,5 +1,5 @@
 class TransactionsController < ApplicationController
-  before_action :set_transaction, only: [:show, :update, :destroy]
+  before_action :set_transaction, only: [:show, :update]
   skip_before_action :authorized, only: [:index, :create, :destroy, :show]
 
   # GET /transactions
@@ -30,7 +30,6 @@ class TransactionsController < ApplicationController
   def destroy
     currentUser = User.find(transaction_params[:user_id])
     @transaction = currentUser.transactions.find_by(coin_id: transaction_params[:coin_id])
-    # @transaction = Transaction.find_by(id: params[:id])
     if  @transaction.destroy
     render json: @transaction, status: :ok
     else
