@@ -45,7 +45,7 @@ data = JSON.parse(RestClient.get('https://api.nomics.com/v1/currencies/ticker?ke
         email: Faker::Internet.email,
         password: '1234',
         img_url: people.sample,
-        bg_url: "https://rumplenewskins.com/image/322341-full_witter-coin-home.jpg",
+        bg_url: "http://wrbbradio.org/wp-content/uploads/2016/10/grey-background-06.jpg",
         coinbank: Faker::Number.between(from: 100, to: 1000)
         
     )

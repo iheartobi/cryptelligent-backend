@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(version: 2019_12_27_150827) do
     t.string "email"
     t.string "password_digest"
     t.string "img_url", default: "http://brandesscadmusrealestate.com/images/team/blank.png"
-    t.string "bg_url", default: "https://rumplenewskins.com/image/322341-full_witter-coin-home.jpg"
+    t.string "bg_url", default: "http://wrbbradio.org/wp-content/uploads/2016/10/grey-background-06.jpg"
     t.bigint "coinbank", default: 1000
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
